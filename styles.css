@@ -1,7 +1,7 @@
 * {
 	margin: 0;
 	padding: 0;
-	font-family: "Playfair Display", system-ui;
+	font-family: "Outfit", sans-serif;
 }
 *,
 *::after,
@@ -11,6 +11,7 @@
 
 :root {
 	font-size: 18px;
+	overflow-x: hidden;
 }
 /* https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible */
 a:focus,
@@ -97,81 +98,14 @@ form {
 	position: relative;
 }
 
-.button::before,
+/* .button::before,
 .button::after {
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
-}
-
-.button--calypso {
-	overflow: hidden;
-	font-family: freight-display-pro, serif;
-	font-size: 1.15rem;
-	border-radius: 0.85rem;
-	color: #fff;
-}
-
-.button--calypso span {
-	display: block;
-	position: relative;
-	mix-blend-mode: difference;
-	z-index: 10;
-}
-
-.button--calypso:hover span {
-	animation: MoveScaleUpInitial 0.3s forwards, MoveScaleUpEnd 0.3s forwards 0.3s;
-}
-
-@keyframes MoveScaleUpInitial {
-	to {
-		transform: translate3d(0, -105%, 0) scale3d(1, 2, 1);
-		opacity: 0;
-	}
-}
-
-@keyframes MoveScaleUpEnd {
-	from {
-		transform: translate3d(0, 100%, 0) scale3d(1, 2, 1);
-		opacity: 0;
-	}
-	to {
-		transform: translate3d(0, 0, 0);
-		opacity: 1;
-	}
-}
-.button--calypso::before {
-	content: "";
-	background: #000;
-	width: 120%;
-	height: 0;
-	padding-bottom: 120%;
-	top: -110%;
-	left: -10%;
-	border-radius: 50%;
-	transform: translate3d(0, 68%, 0) scale3d(0, 0, 0);
-}
-
-.button--calypso:hover::before {
-	transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
-	transition: transform 0.4s cubic-bezier(0.1, 0, 0.3, 1);
-}
-
-.button--calypso::after {
-	content: "";
-	background: #000;
-	transform: translate3d(0, -100%, 0);
-	transition: transform 0.4s cubic-bezier(0.1, 0, 0.3, 1);
-}
-
-.button--calypso:hover::after {
-	transform: translate3d(0, 0, 0);
-	transition-duration: 0.05s;
-	transition-delay: 0.4s;
-	transition-timing-function: linear;
-}
+} */
 
 .hero-section {
 	width: 100%;
@@ -179,31 +113,97 @@ form {
 	background: url("./hero-img.png") no-repeat center;
 	background-size: cover;
 	display: flex;
-	justify-content: center;
-	align-items: center;
 	color: white;
-	text-align: center;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.content-cont {
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+}
+
+@keyframes slide-in-right {
+	0% {
+		transform: translateX(100%);
+	}
+	100% {
+		transform: translateX(0);
+	}
+}
+
+.content {
+	margin-bottom: 8rem;
+	/* position: absolute; */
+	width: 15rem;
+	height: 11rem;
+	background: rgb(0, 17, 255);
+	background: linear-gradient(130deg, #041d4b 30%, #044868 100%);
+	padding: 2.5rem;
+	text-align: right;
+	display: flex;
+	margin-top: 12rem;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-end;
+	gap: 0.4rem;
+	animation: slide-in-right 1s ease-out;
+}
+
+.content h3 {
+	font-weight: 500;
+	font-size: 1.1rem;
+}
+.content p {
+	font-size: 0.9rem;
+	opacity: 0.6;
+}
+.content .applyf {
+	width: 100%;
+	height: fit-content;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.content .apply {
+	font-size: 1rem;
+	margin-top: 0.6rem;
+	font-weight: 500;
+	cursor: pointer;
+	background: none;
+	color: rgb(255, 255, 107);
+	border: none;
+	display: block;
 }
 
 .hero-text {
-	margin-top: 160px;
+	max-width: 10rem;
+	/* position: absolute; */
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	gap: 10px;
+	gap: 1rem;
+	margin-left: 6rem;
 }
 
 .hero-text h1 {
-	font-size: 4rem;
-	font-weight: 700;
+	letter-spacing: -6px;
+	line-height: 6.4rem;
+	font-size: 7rem;
+	font-weight: 400;
+	padding: 0;
+	margin: 0;
 }
 
 .hero-text p {
-	font-size: 2rem;
-	font-weight: 500;
+	padding-left: 12px;
+	font-size: 1.2rem;
+	overflow: visible;
+	text-wrap: nowrap;
+	font-weight: 400;
 	/* color: rgb(61, 151, 255); */
-	filter: brightness(0.8);
+	filter: brightness(0.6);
 }
 
 .navbar {
@@ -214,32 +214,21 @@ form {
 	display: flex;
 	flex-grow: 1;
 	color: white;
-	padding: 20px 60px;
-}
-
-.logo-main,
-.logo,
-.menu-cont {
-	flex: 1;
+	padding: calc(8svh);
 	display: flex;
 	align-items: center;
-	justify-content: center;
-}
-
-.navbar img {
-	width: 250px;
-}
-
-.logo-main {
-	justify-content: start;
-}
-.logo-main img {
-	aspect-ratio: 1/1;
-	width: 60px;
-}
-
-.menu-cont {
 	justify-content: flex-end;
+	background: rgb(0, 0, 0);
+	background: linear-gradient(
+		0deg,
+		rgba(0, 0, 0, 0) 50%,
+		rgba(0, 0, 0, 0.4) 100%
+	);
+}
+.navbar img {
+	position: absolute;
+	width: 14rem;
+	left: calc(8svh);
 }
 
 .navbar .menu {
@@ -247,12 +236,88 @@ form {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	gap: 80px;
+	gap: 4.5rem;
 }
 
 .menu li a {
 	text-decoration: none;
 	color: rgb(255, 255, 255);
-	font-size: 1.3rem;
-	font-weight: 500;
+	font-size: 0.9rem;
+	font-weight: 600;
+	filter: brightness(0.6);
+	transition: all 0.3s;
+}
+
+.menu li a:hover {
+	filter: brightness(1);
+}
+
+.sticky-foot {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	background-color: none;
+	display: flex;
+	justify-content: center;
+	padding: 1rem 8vh;
+	background: rgb(0, 0, 0);
+	background: linear-gradient(
+		0deg,
+		rgba(0, 0, 0, 0.4) 0%,
+		rgba(0, 0, 0, 0) 50%
+	);
+}
+
+.sticky-foot .logo {
+	width: 3rem;
+	right: 0;
+	left: 0;
+}
+
+.sticky-foot .foot-text {
+	position: absolute;
+	right: 8vh;
+	top: 0;
+	bottom: 0;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	color: white;
+	opacity: 0.8;
+}
+
+.sticky-foot .socials {
+	position: absolute;
+	left: 8vh;
+	top: 0;
+	bottom: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 1.2rem;
+}
+
+.sticky-foot .socials div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0.4rem;
+	border-radius: 100%;
+	border: solid 2px;
+	border-color: transparent;
+	transition: all 0.3s;
+	opacity: 0.8;
+	cursor: pointer;
+}
+
+.sticky-foot .socials div:hover {
+	opacity: 1;
+	border-color: white;
+}
+
+.sticky-foot .socials img {
+	filter: invert(96%) sepia(88%) saturate(2%) hue-rotate(198deg)
+		brightness(114%) contrast(101%);
+	width: 1rem;
+	transition: all 0.3s;
 }
